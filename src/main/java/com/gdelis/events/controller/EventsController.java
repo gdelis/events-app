@@ -1,5 +1,7 @@
-package com.gdelis.events;
+package com.gdelis.events.controller;
 
+import com.gdelis.events.response.EventDetailsResponse;
+import com.gdelis.events.service.EventsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +18,9 @@ public class EventsController {
    }
 
    @GetMapping
-   public Flux<EventDetails> getEvents() {
-      return Flux.fromIterable(eventsService.getEvents());
+   public Flux<EventDetailsResponse> getEvents() {
+      return eventsService.getEvents()
+                          .map(EventDetailsResponse::from);
    }
 }
 

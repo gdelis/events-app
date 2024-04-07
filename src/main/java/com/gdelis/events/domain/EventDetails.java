@@ -1,4 +1,4 @@
-package com.gdelis.events;
+package com.gdelis.events.domain;
 
 import lombok.Builder;
 
