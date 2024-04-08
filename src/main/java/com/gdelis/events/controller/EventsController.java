@@ -28,7 +28,7 @@ public class EventsController {
    @GetMapping("/{id}")
    public Mono<EventDetailsResponse> getEventById(@PathVariable(name = "id") final String eventId) {
       return eventsService.getEventById(eventId)
-          .map(s -> EventDetailsResponse.from(s));
+                          .map(EventDetailsResponse::from);
    }
 }
 

@@ -4,12 +4,14 @@ import com.gdelis.events.domain.EventDetails;
 import lombok.Builder;
 
 @Builder
-public record EventDetailsResponse(String id, String title) {
+public record EventDetailsResponse(String id, String title, String startDate, String endDate) {
 
    public static EventDetailsResponse from(final EventDetails eventDetails) {
       return EventDetailsResponse.builder()
                                  .id(eventDetails.id())
                                  .title(eventDetails.title())
+                                 .startDate(eventDetails.startDate())
+                                 .endDate(eventDetails.endDate())
                                  .build();
    }
 }
