@@ -1,13 +1,12 @@
 package com.gdelis.events.repository;
 
 import com.gdelis.events.domain.EventDetails;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import java.util.List;
 
 public interface EventsRepository {
-   Flux<EventDetails> findAll();
+   List<EventDetails> findAll();
 
-   Mono<EventDetails> findById(String eventId);
+   EventDetails findById(String eventId);
 
    void deleteById(String eventId);
 }

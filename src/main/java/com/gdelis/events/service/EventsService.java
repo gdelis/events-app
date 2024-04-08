@@ -2,10 +2,8 @@ package com.gdelis.events.service;
 
 import com.gdelis.events.domain.EventDetails;
 import com.gdelis.events.repository.EventsRepository;
-import java.util.Optional;
+import java.util.List;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Service
 public class EventsService {
@@ -16,11 +14,11 @@ public class EventsService {
       this.eventsRepository = eventsRepository;
    }
 
-   public Flux<EventDetails> getEvents() {
+   public List<EventDetails> getEvents() {
       return eventsRepository.findAll();
    }
 
-   public Mono<EventDetails> getEventById(final String eventId) {
+   public EventDetails getEventById(final String eventId) {
       return eventsRepository.findById(eventId);
    }
 

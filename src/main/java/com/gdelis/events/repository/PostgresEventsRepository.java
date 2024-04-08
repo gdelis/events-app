@@ -5,8 +5,6 @@ import com.gdelis.events.domain.EventDetails;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Repository
 public class PostgresEventsRepository implements EventsRepository {
@@ -26,17 +24,20 @@ public class PostgresEventsRepository implements EventsRepository {
                                                .build());
    }
 
-   public Flux<EventDetails> findAll() {
-      return Flux.fromIterable(eventDetailsList)
-                 .map(EventDetails::from);
+   public List<EventDetails> findAll() {
+      return eventDetailsList.stream()
+                             .map(EventDetails::from)
+                             .toList();
    }
 
    @Override
-   public Mono<EventDetails> findById(final String eventId) {
-      return Flux.fromIterable(eventDetailsList)
-                 .filter(s -> eventId.equals(s.id()))
-                 .next()
-                 .map(EventDetails::from);
+   public EventDetails findById(final String eventId) {
+      return eventDetailsList.stream()
+                             .filter(s -> eventId.equals(s.id()))
+                             .map(EventDetails::from)
+                             .findAny()
+                             .orElseThrow(
+                                 () -> new RuntimeException(String.format("event with id: %s not found", eventId)));
    }
 
    @Override
