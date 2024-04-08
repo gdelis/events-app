@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Repository
 public class PostgresEventsRepository implements EventsRepository {
@@ -16,17 +17,25 @@ public class PostgresEventsRepository implements EventsRepository {
       this.eventDetailsList = new ArrayList<>();
 
       this.eventDetailsList.add(EventDetailsDTO.builder()
-                                            .id("1")
-                                            .title("event-title-1")
-                                            .build());
+                                               .id("1")
+                                               .title("event-title-1")
+                                               .build());
       this.eventDetailsList.add(EventDetailsDTO.builder()
-                                            .id("2")
-                                            .title("event-title-2")
-                                            .build());
+                                               .id("2")
+                                               .title("event-title-2")
+                                               .build());
    }
 
    public Flux<EventDetails> findAll() {
       return Flux.fromIterable(eventDetailsList)
-          .map(EventDetailsDTO::from);
+                 .map(EventDetails::from);
+   }
+
+   @Override
+   public Mono<EventDetails> findById(final String eventId) {
+      return Flux.fromIterable(eventDetailsList)
+                 .filter(s -> eventId.equals(s.id()))
+                 .next()
+                 .map(EventDetails::from);
    }
 }
