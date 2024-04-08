@@ -2,6 +2,7 @@ package com.gdelis.events.controller;
 
 import com.gdelis.events.response.EventDetailsResponse;
 import com.gdelis.events.service.EventsService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,11 @@ public class EventsController {
    public Mono<EventDetailsResponse> getEventById(@PathVariable(name = "id") final String eventId) {
       return eventsService.getEventById(eventId)
                           .map(EventDetailsResponse::from);
+   }
+
+   @DeleteMapping("/{id}")
+   public void deleteEventById(@PathVariable(name = "id") final String eventId){
+      eventsService.deleteEventById(eventId);
    }
 }
 

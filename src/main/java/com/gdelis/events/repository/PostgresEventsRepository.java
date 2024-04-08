@@ -1,7 +1,7 @@
 package com.gdelis.events.repository;
 
-import com.gdelis.events.domain.EventDetails;
 import com.gdelis.events.dao.EventDetailsDAO;
+import com.gdelis.events.domain.EventDetails;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
@@ -37,5 +37,13 @@ public class PostgresEventsRepository implements EventsRepository {
                  .filter(s -> eventId.equals(s.id()))
                  .next()
                  .map(EventDetails::from);
+   }
+
+   @Override
+   public void deleteById(final String eventId) {
+      eventDetailsList.stream()
+                      .filter(s -> eventId.equals(s.id()))
+                      .findAny()
+                      .ifPresent(eventDetailsList::remove);
    }
 }

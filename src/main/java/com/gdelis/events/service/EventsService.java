@@ -23,4 +23,8 @@ public class EventsService {
    public Mono<EventDetails> getEventById(final String eventId) {
       return eventsRepository.findById(eventId);
    }
+
+   public void deleteEventById(final String eventId) {
+      eventsRepository.deleteById(eventId);
+   }
 }

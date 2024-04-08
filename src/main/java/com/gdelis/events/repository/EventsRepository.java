@@ -8,4 +8,6 @@ public interface EventsRepository {
    Flux<EventDetails> findAll();
 
    Mono<EventDetails> findById(String eventId);
+
+   void deleteById(String eventId);
 }
