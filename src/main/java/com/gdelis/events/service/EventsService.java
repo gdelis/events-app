@@ -21,8 +21,4 @@ public class EventsService {
    public EventDetails getEventById(final String eventId) {
       return eventsRepository.findById(eventId);
    }
-
-   public void deleteEventById(final String eventId) {
-      eventsRepository.deleteById(eventId);
-   }
 }
