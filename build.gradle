@@ -24,8 +24,8 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
-	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	compileOnly 'org.projectlombok:lombok'
 
@@ -33,17 +33,14 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
 
 	runtimeOnly 'org.postgresql:postgresql'
-	runtimeOnly 'org.postgresql:r2dbc-postgresql'
 
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-	testImplementation 'io.projectreactor:reactor-test'
 	testImplementation 'org.testcontainers:junit-jupiter'
 	testImplementation 'org.testcontainers:postgresql'
-	testImplementation 'org.testcontainers:r2dbc'
 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
