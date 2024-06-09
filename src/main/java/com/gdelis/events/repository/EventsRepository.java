@@ -6,7 +6,7 @@ import java.util.List;
 public interface EventsRepository {
    List<EventDetails> findAll();
 
-   EventDetails findById(String eventId);
+   EventDetails findById(Integer eventId);
 
-   void deleteById(String eventId);
+   void deleteById(Integer eventId);
 }

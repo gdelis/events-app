@@ -18,7 +18,7 @@ public class EventsService {
       return eventsRepository.findAll();
    }
 
-   public EventDetails getEventById(final String eventId) {
+   public EventDetails getEventById(final Integer eventId) {
       return eventsRepository.findById(eventId);
    }
 }

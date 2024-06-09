@@ -1,6 +1,6 @@
 package com.gdelis.events.controller;
 
-import com.gdelis.events.response.EventDetailsResponse;
+import com.gdelis.events.controller.response.EventDetailsResponse;
 import com.gdelis.events.service.EventsService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +28,7 @@ public class EventsController {
    }
 
    @GetMapping("/{id}")
-   public ResponseEntity<EventDetailsResponse> getEventById(@PathVariable(name = "id") final String eventId) {
+   public ResponseEntity<EventDetailsResponse> getEventById(@PathVariable(name = "id") final Integer eventId) {
       return ResponseEntity.ok(EventDetailsResponse.from(eventsService.getEventById(eventId)));
    }
 }

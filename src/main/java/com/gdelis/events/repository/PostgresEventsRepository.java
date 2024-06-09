@@ -4,6 +4,7 @@ import com.gdelis.events.dao.EventDetailsDAO;
 import com.gdelis.events.domain.EventDetails;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -14,14 +15,8 @@ public class PostgresEventsRepository implements EventsRepository {
    public PostgresEventsRepository() {
       this.eventDetailsList = new ArrayList<>();
 
-      this.eventDetailsList.add(EventDetailsDAO.builder()
-                                               .id("1")
-                                               .title("event-title-1")
-                                               .build());
-      this.eventDetailsList.add(EventDetailsDAO.builder()
-                                               .id("2")
-                                               .title("event-title-2")
-                                               .build());
+      this.eventDetailsList.add(new EventDetailsDAO(1, "event-title-1", null, null));
+      this.eventDetailsList.add(new EventDetailsDAO(2, "event-title-2", null, null));
    }
 
    public List<EventDetails> findAll() {
@@ -31,9 +26,9 @@ public class PostgresEventsRepository implements EventsRepository {
    }
 
    @Override
-   public EventDetails findById(final String eventId) {
+   public EventDetails findById(final Integer eventId) {
       return eventDetailsList.stream()
-                             .filter(s -> eventId.equals(s.id()))
+                             .filter(s -> Objects.equals(s.id(), eventId))
                              .map(EventDetails::from)
                              .findAny()
                              .orElseThrow(
@@ -41,9 +36,9 @@ public class PostgresEventsRepository implements EventsRepository {
    }
 
    @Override
-   public void deleteById(final String eventId) {
+   public void deleteById(final Integer eventId) {
       eventDetailsList.stream()
-                      .filter(s -> eventId.equals(s.id()))
+                      .filter(s -> Objects.equals(s.id(), eventId))
                       .findAny()
                       .ifPresent(eventDetailsList::remove);
    }
