@@ -1,6 +1,6 @@
 package com.gdelis.events.domain;
 
-import com.gdelis.events.dao.EventDetailsDAO;
+import com.gdelis.events.repository.dao.EventDetailsDAO;
 import lombok.Builder;
 
 @Builder

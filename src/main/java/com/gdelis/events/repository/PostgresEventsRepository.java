@@ -1,6 +1,6 @@
 package com.gdelis.events.repository;
 
-import com.gdelis.events.dao.EventDetailsDAO;
+import com.gdelis.events.repository.dao.EventDetailsDAO;
 import com.gdelis.events.domain.EventDetails;
 import java.util.ArrayList;
 import java.util.List;
