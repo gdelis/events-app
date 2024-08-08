@@ -3,6 +3,7 @@ package com.gdelis.events.service;
 import com.gdelis.events.domain.EventDetails;
 import com.gdelis.events.repository.EventsRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,7 +19,7 @@ public class EventsService {
       return eventsRepository.findAll();
    }
 
-   public EventDetails getEventById(final Integer eventId) {
-      return eventsRepository.findById(eventId);
+   public Optional<EventDetails> getEventById(final Integer eventId) {
+      return Optional.of(eventsRepository.findById(eventId));
    }
 }
