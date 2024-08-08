@@ -16,10 +16,13 @@ public class EventsService {
    }
 
    public List<EventDetails> getEvents() {
-      return eventsRepository.findAll();
+      return eventsRepository.findAll()
+                             .stream()
+                             .map(EventDetails::from)
+                             .toList();
    }
 
    public Optional<EventDetails> getEventById(final Integer eventId) {
-      return Optional.of(eventsRepository.findById(eventId));
+      return eventsRepository.findById(eventId).map(EventDetails::from);
    }
 }

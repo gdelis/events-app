@@ -3,7 +3,7 @@ services:
     image: postgres:latest
     container_name: postgres
     environment:
-      POSTGRES_USER: username
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       POSTGRES_DB: events-app
     ports:

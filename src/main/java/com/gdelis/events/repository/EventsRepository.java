@@ -1,12 +1,9 @@
 package com.gdelis.events.repository;
 
-import com.gdelis.events.domain.EventDetails;
-import java.util.List;
+import com.gdelis.events.repository.dao.EventDetailsDAO;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface EventsRepository {
-   List<EventDetails> findAll();
-
-   EventDetails findById(Integer eventId);
-
-   void deleteById(Integer eventId);
+@Repository
+public interface EventsRepository extends JpaRepository<EventDetailsDAO, Integer> {
 }
