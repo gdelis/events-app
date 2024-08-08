@@ -1,10 +1,11 @@
 package com.gdelis.events.controller.response;
 
 import com.gdelis.events.domain.EventDetails;
+import java.time.LocalDateTime;
 import lombok.Builder;
 
 @Builder
-public record EventDetailsResponse(Integer id, String title, String startDate, String endDate) {
+public record EventDetailsResponse(Integer id, String title, LocalDateTime startDate, LocalDateTime endDate) {
 
    public static EventDetailsResponse from(final EventDetails eventDetails) {
       return EventDetailsResponse.builder()
