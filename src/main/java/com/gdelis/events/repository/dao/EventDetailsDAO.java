@@ -8,13 +8,16 @@ import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 // JPA entities can not be records because NoArgument constructor is needed
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class EventDetailsDAO {
+
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Integer id;
