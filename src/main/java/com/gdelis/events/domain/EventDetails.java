@@ -9,10 +9,10 @@ public record EventDetails(Integer id, String title, LocalDateTime startDate, Lo
 
    public static EventDetails from(final EventDetailsDAO eventDetailsDAO) {
       return EventDetails.builder()
-                         .id(eventDetailsDAO.id())
-                         .title(eventDetailsDAO.title())
-                         .startDate(eventDetailsDAO.startDate())
-                         .endDate(eventDetailsDAO.endDate())
+                         .id(eventDetailsDAO.getId())
+                         .title(eventDetailsDAO.getTitle())
+                         .startDate(eventDetailsDAO.getStartDate())
+                         .endDate(eventDetailsDAO.getEndDate())
                          .build();
    }
 }
