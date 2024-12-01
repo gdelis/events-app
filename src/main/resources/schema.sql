@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS events;
+
 CREATE TABLE IF NOT EXISTS events
 (
     id         serial PRIMARY KEY ,
